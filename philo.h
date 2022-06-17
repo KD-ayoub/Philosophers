@@ -6,7 +6,7 @@
 /*   By: akadi <akadi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 12:29:17 by akadi             #+#    #+#             */
-/*   Updated: 2022/06/14 12:57:34 by akadi            ###   ########.fr       */
+/*   Updated: 2022/06/16 15:37:04 by akadi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 
 
 int	ft_strlen(char *str);
+int	ft_atoi(const char *str);
 int	ft_isdigit(int c);
 int	ft_isnbr(char *av);
 int	check_error(int ac, char **av);

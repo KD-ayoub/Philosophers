@@ -6,11 +6,38 @@
 /*   By: akadi <akadi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 12:35:29 by akadi             #+#    #+#             */
-/*   Updated: 2022/06/14 13:14:32 by akadi            ###   ########.fr       */
+/*   Updated: 2022/06/16 15:36:52 by akadi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+int	ft_atoi(const char *str)
+{
+	int		sign;
+	int		result;
+	int		i;
+	char	*src;
+
+	i = 0;
+	sign = 1;
+	result = 0;
+	src = (char *)str;
+	while ((src[i] >= 9 && src[i] <= 13) || src[i] == ' ')
+		i++;
+	if (src[i] == '+' || src[i] == '-')
+	{
+		if (src[i] == '-')
+			sign = sign * -1;
+		i++;
+	}
+	while ((src[i] >= '0' && src[i] <= '9') && src[i] != '\0')
+	{
+		result = result * 10 + src[i] - '0';
+		i++;
+	}
+	return (result * sign);
+}
 
 int	ft_isdigit(int c)
 {
@@ -46,14 +73,14 @@ int	check_error(int ac, char **av)
 	int	i;
 
 	i = 1;
-	if (ac < 5 || av[1][0] == '0')
+	if (ac < 5)
 	{
 		write(1, "Error\n", 6);
 		return (1);
 	}
 	while(av[i])
 	{
-		if (!ft_isnbr(av[i]) || av[i][0] == '-')
+		if (!ft_isnbr(av[i]) || av[i][0] == '-' || !ft_atoi(av[i]))
 		{
 			write(1, "Error\n", 6);
 			return (1);
