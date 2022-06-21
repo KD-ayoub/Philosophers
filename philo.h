@@ -6,7 +6,7 @@
 /*   By: akadi <akadi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 12:29:17 by akadi             #+#    #+#             */
-/*   Updated: 2022/06/19 16:44:02 by akadi            ###   ########.fr       */
+/*   Updated: 2022/06/21 19:54:20 by akadi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ int	ft_strlen(char *str);
 int	ft_atoi(const char *str);
 int	ft_isdigit(int c);
 int	ft_isnbr(char *av);
+long	get_current_time(void);
 int	check_error(int ac, char **av);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: akadi <akadi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 12:26:53 by akadi             #+#    #+#             */
-/*   Updated: 2022/06/19 17:41:21 by akadi            ###   ########.fr       */
+/*   Updated: 2022/06/21 19:53:25 by akadi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,6 @@ long	get_current_time(void)
 
 void	get_arguments(info *arg, char **av, int ac)
 {
-	t_philo	*philo;
-	
-	philo = malloc(sizeof(t_philo) * ft_atoi(av[1])); 
 	arg->number_of_philos = ft_atoi(av[1]);
 	arg->time_to_die = ft_atoi(av[2]);
 	arg->time_to_eat = ft_atoi(av[3]);
@@ -42,12 +39,13 @@ void	get_arguments(info *arg, char **av, int ac)
 }
 int	main(int ac, char **av)
 {
+	t_philo	*philo;
 	info	arg;
 
 	if (check_error(ac, av) || ac == 1)
 		return (0);
-	
 	get_arguments(&arg, av, ac);
-	
+	philo = malloc(sizeof(t_philo) * arg.number_of_philos);
+	init_philo(philo, &arg);
 }
 
