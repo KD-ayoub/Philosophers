@@ -6,7 +6,7 @@
 /*   By: akadi <akadi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 18:46:41 by akadi             #+#    #+#             */
-/*   Updated: 2022/06/21 21:24:04 by akadi            ###   ########.fr       */
+/*   Updated: 2022/06/22 17:37:53 by akadi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,26 @@ void	init_philo(t_philo *philo, info *arg)
 	while(i < arg->number_of_philos)
 	{
 		philo[i].num_philo = i + 1;
+		philo[i].left = &arg->forks[i];
+		if (i == 0)
+			philo[i].right = &arg->forks[arg->number_of_philos - 1];
+		else
+			philo[i].right = &arg->forks[i - 1];
+		philo[i].info = arg;
+		philo[i].last_meal = arg->time;
+		philo[i].num_eat = 0;
+		philo[i].info->stop = 0;
+		pthread_create(&philo->thread, NULL, &routine, &philo[i]);
+		i++;
 	}
 }
 
-void	
+void	init_fork(info *arg)
+{
+	int	i;
+
+	i = 0;
+	arg->forks = malloc(sizeof(pthread_mutex_t) * arg->number_of_philos);
+	while (i < arg->number_of_philos)
+		pthread_mutex_init(&arg->forks[i++], NULL);
+}

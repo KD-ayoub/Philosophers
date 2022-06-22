@@ -6,7 +6,7 @@
 /*   By: akadi <akadi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 12:29:17 by akadi             #+#    #+#             */
-/*   Updated: 2022/06/21 19:54:20 by akadi            ###   ########.fr       */
+/*   Updated: 2022/06/22 17:37:13 by akadi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,12 @@ typedef struct argument
 	int				time_to_sleep;
 	int				n_of_philo_must_eat;
 	int				dead;
+	int				stop;
 	long			time;
+	long			print_time;
 	pthread_mutex_t	mutex;
 	pthread_mutex_t	*forks;
-
+	pthread_t		check_dead;
 }info;
 
 typedef struct s_philo
@@ -51,6 +53,9 @@ int	ft_atoi(const char *str);
 int	ft_isdigit(int c);
 int	ft_isnbr(char *av);
 long	get_current_time(void);
+void	init_philo(t_philo *philo, info *arg);
+void	init_fork(info *arg);
+void	*routine(void	*philo);
 int	check_error(int ac, char **av);
 
 #endif

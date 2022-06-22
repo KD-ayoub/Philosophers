@@ -6,7 +6,7 @@
 /*   By: akadi <akadi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 12:26:53 by akadi             #+#    #+#             */
-/*   Updated: 2022/06/21 19:53:25 by akadi            ###   ########.fr       */
+/*   Updated: 2022/06/22 17:42:50 by akadi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,6 @@ int	main(int ac, char **av)
 	get_arguments(&arg, av, ac);
 	philo = malloc(sizeof(t_philo) * arg.number_of_philos);
 	init_philo(philo, &arg);
+	init_fork(&arg);
 }
 
