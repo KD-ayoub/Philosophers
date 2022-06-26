@@ -6,7 +6,7 @@
 #    By: akadi <akadi@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/14 12:49:08 by akadi             #+#    #+#              #
-#    Updated: 2022/06/22 17:36:52 by akadi            ###   ########.fr        #
+#    Updated: 2022/06/26 21:45:40 by akadi            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,12 @@ CFLAGS= -Wall -Wextra -Werror
 SRCS=philo.c\
 	check_error.c\
 	ft_strlen.c\
+	ft_strncmp.c\
 	initial.c\
 	eating.c\
+	ft_usleep.c\
+	print_msg.c\
+	check_dead.c\
 
 OBJS=$(SRCS:.c=.o)
 INCL= philo.h

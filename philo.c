@@ -6,7 +6,7 @@
 /*   By: akadi <akadi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 12:26:53 by akadi             #+#    #+#             */
-/*   Updated: 2022/06/22 17:42:50 by akadi            ###   ########.fr       */
+/*   Updated: 2022/06/26 21:52:57 by akadi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,28 @@ void	get_arguments(info *arg, char **av, int ac)
 		arg->n_of_philo_must_eat = -1;
 	
 }
+
+void	end_all(info *data, t_philo *philos)
+{
+	int	i;
+
+	i = 0;
+	while (i < data->number_of_philos)
+	{
+		pthread_join(philos[i].thread, NULL);
+		i++;
+	}
+	i = 0;
+	while (i < data->number_of_philos)
+	{
+		pthread_mutex_destroy(philos[i].right);
+		i++;
+	}
+	pthread_join(data->check_dead, NULL);
+	free(philos);
+	free(data->forks);
+}
+
 int	main(int ac, char **av)
 {
 	t_philo	*philo;
@@ -48,5 +70,6 @@ int	main(int ac, char **av)
 	philo = malloc(sizeof(t_philo) * arg.number_of_philos);
 	init_philo(philo, &arg);
 	init_fork(&arg);
+	end_all(&arg, philo);
 }
 
